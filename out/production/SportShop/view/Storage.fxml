@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="834.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StorageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="1026.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StorageController">
    <left>
       <VBox prefHeight="384.0" prefWidth="349.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
          <children>
@@ -49,41 +49,74 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Naziv : " GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Količina : " GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cijena : " GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kategorija :" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Količina :" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Text layoutX="50.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cijena : " GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                   <TextField fx:id="nazivTxt" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="kolicinaTxt" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="kategorijaTxt" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cijenaTxt" prefHeight="25.0" prefWidth="142.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="kolicinaTxt" prefHeight="25.0" prefWidth="142.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="cijenaTxt" layoutX="131.0" layoutY="154.0" prefHeight="25.0" prefWidth="206.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets right="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Text layoutX="10.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Skladište :" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <TextField fx:id="skladisteTxt" layoutX="131.0" layoutY="216.0" prefHeight="25.0" prefWidth="206.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </TextField>
                </children>
             </GridPane>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #515151;" VBox.vgrow="ALWAYS">
+               <children>
+                  <Button fx:id="adminBtn" mnemonicParsing="false" onAction="#openAdminPanel" text="Admin">
+                     <HBox.margin>
+                        <Insets left="35.0" top="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logout" text="Logout">
+                     <HBox.margin>
+                        <Insets left="193.0" top="30.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </left>
    <center>
-      <TableView fx:id="tbl" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#odaberi" prefHeight="400.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tbl" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#odaberi" prefHeight="383.0" prefWidth="676.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="naziv" prefWidth="150.0" resizable="false" text="Naziv" />
+            <TableColumn fx:id="kategorija" minWidth="0.0" prefWidth="100.0" resizable="false" text="Kategorija" />
           <TableColumn fx:id="kolicina" prefWidth="150.0" resizable="false" text="Količina" />
             <TableColumn fx:id="cijena" minWidth="0.0" prefWidth="100.0" resizable="false" text="Cijena" />
+            <TableColumn fx:id="skladiste" minWidth="0.0" prefWidth="100.0" resizable="false" text="Skladište" />
         </columns>
       </TableView>
    </center>
    <bottom>
-      <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="964.0" style="-fx-background-color: #476aa3;" text="Tri Musketira " textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER" />
+      <Label fx:id="errorTxt" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="964.0" style="-fx-background-color: #476aa3;" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER" />
    </bottom>
+   <top>
+      <Label fx:id="userName" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="17.0" style="-fx-background-color: #476aa3;" text="Tri Musketira" textAlignment="RIGHT" textFill="WHITE" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>

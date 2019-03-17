@@ -37,12 +37,4 @@ public abstract class Konekcija {
     public abstract ResultSet select (String sql);
     public abstract PreparedStatement exec (String sql);
 
-    public void odspoji () {
-        try {
-            this.konekcija.close();
-        } catch (SQLException e) {
-            System.out.println ("Sustav nije uspio zatvoriti konekciju...");
-        }
-    }
-
 }

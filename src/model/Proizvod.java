@@ -8,52 +8,99 @@ import javafx.collections.ObservableList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Proizvod implements Model{
 
     private SimpleIntegerProperty sifra;
     private SimpleStringProperty ime;
-    private SimpleStringProperty prezime;
-    private SimpleStringProperty email;
+    private SimpleStringProperty kategorija;
+    private SimpleStringProperty kolicina;
+    private SimpleStringProperty cijena;
+    private SimpleIntegerProperty skladiste;
 
-    public Proizvod (Integer sifra, String ime, String prezime, String email) {
+    public static Map<String, Integer> map = new HashMap<>();
+    private static int katNum;
+    public boolean exists;
+
+    public static void getKatNum(){
+        Baza DB = new Baza();
+        ResultSet rs = DB.select("SELECT * FROM kategorija");
+        try{
+            while(rs.next()){
+                map.put(rs.getString("ime"),rs.getInt("kategorija_id"));
+                katNum++;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Nastala je greška prilikom iteriranja: " + ex.getMessage());
+        }
+    }
+
+    public Proizvod (Integer sifra, String ime, String kategorija, String kolicina, String cijena, int skladiste) {
         this.sifra = new SimpleIntegerProperty (sifra);
         this.ime = new SimpleStringProperty(ime);
-        this.prezime = new SimpleStringProperty(prezime);
-        this.email = new SimpleStringProperty(email);
+        this.kategorija = new SimpleStringProperty(kategorija);
+        this.kolicina = new SimpleStringProperty(kolicina);
+        this.cijena = new SimpleStringProperty(cijena);
+        this.skladiste = new SimpleIntegerProperty(skladiste);
     }
+
     public Integer getSifra () {
         return sifra.get();
     }
     public String getIme () {
         return ime.get();
     }
-    public String getPrezime () {
-        return prezime.get();
+    public String getKategorija () {
+        return kategorija.get();
     }
-    public String getEmail () {
-        return email.get();
+    public String getKolicina () {
+        return kolicina.get();
+    }
+    public String getCijena () {
+        return cijena.get();
+    }
+    public int getSkladiste () {
+        return skladiste.get();
     }
 
     public void setIme(String ime) {
         this.ime.set(ime);
     }
 
-    public void setPrezime(String prezime) {
-        this.prezime.set(prezime);
+    public void setKategorija(String kategorija) {
+        this.kategorija.set(kategorija);
     }
 
-    public void setEmail(String email) {
-        this.email.set(email);
+    public void setKolicina(String kolicina) {
+        this.kolicina.set(kolicina);
     }
 
-    public static ObservableList<Proizvod> listaKontakata () {
+    public void setCijena(String cijena) {
+        this.cijena.set(cijena);
+    }
+
+    public void setSkladiste(int skladiste) {
+        this.skladiste.set(skladiste);
+    }
+
+    public int getKatInt(){
+        if(map.get(this.getKategorija()) != null){
+            return map.get(this.getKategorija());
+        } else {
+            return -1;
+        }
+    }
+
+    public static ObservableList<Proizvod> listaProizvoda() {
         ObservableList<Proizvod> lista = FXCollections.observableArrayList();
         Baza DB = new Baza();
-        ResultSet rs = DB.select("SELECT * FROM kontakt");
+        ResultSet rs = DB.select("SELECT * FROM proizvod p JOIN kategorija k WHERE p.kategorija_id=k.kategorija_id");
         try {
             while (rs.next()) {
-                lista.add(new Proizvod(rs.getInt("id"), rs.getString("ime"), rs.getString("prezime"), rs.getString("email")));
+                lista.add(new Proizvod(rs.getInt("id"), rs.getString("p.ime"), rs.getString("k.ime") ,
+                                       rs.getString("kolicina"), rs.getString("cijena"), rs.getInt("skladiste_id")));
             }
         } catch (SQLException ex) {
             System.out.println("Nastala je greška prilikom iteriranja: " + ex.getMessage());
@@ -66,11 +113,24 @@ public class Proizvod implements Model{
     public void create() {
         try {
             Baza DB = new Baza();
-            PreparedStatement upit = DB.exec("INSERT INTO kontakt VALUES (null,?,?,?)");
+
+            if((getKatInt() == -1) && (Korisnik.user.toString() == "admin")) {
+                map.put(getKategorija(), ++katNum);
+                PreparedStatement katUpit = DB.exec("INSERT INTO kategorija VALUES (?,?)");
+                katUpit.setInt(1, getKatInt());
+                katUpit.setString(2, getKategorija());
+                katUpit.executeUpdate();
+            }
+
+            PreparedStatement upit = DB.exec("INSERT INTO proizvod VALUES (null,?,?,?,?,?)");
             upit.setString(1, this.getIme());
-            upit.setString(2, this.getPrezime());
-            upit.setString(3, this.getEmail());
+            upit.setInt(2, getKatInt());
+            upit.setString(3, this.getKolicina());
+            upit.setString(4, this.getCijena());
+            upit.setInt(5, this.getSkladiste());
+
             upit.executeUpdate();
+
         } catch (SQLException ex) {
             System.out.println("Greška prilikom spasavanja korisnika u bazu: " + ex.getMessage());
         }
@@ -80,11 +140,13 @@ public class Proizvod implements Model{
     public void update() {
         try {
             Baza DB = new Baza();
-            PreparedStatement upit = DB.exec("UPDATE kontakt SET ime=?, prezime=?, email=? WHERE id=?");
+            PreparedStatement upit = DB.exec("UPDATE proizvod SET ime=?, kategorija_id=?, kolicina=?, cijena=?, skladiste_id=? WHERE id=?");
             upit.setString(1, this.getIme());
-            upit.setString(2, this.getPrezime());
-            upit.setString(3, this.getEmail());
-            upit.setInt(4, this.getSifra());
+            upit.setInt(2, getKatInt());
+            upit.setString(3, this.getKolicina());
+            upit.setString(4, this.getCijena());
+            upit.setInt(5, this.getSkladiste());
+            upit.setInt(6, this.getSifra());
             upit.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Greška prilikom spasavanja korisnika u bazu: " + ex.getMessage());
@@ -96,7 +158,7 @@ public class Proizvod implements Model{
     public void delete() {
         try {
             Baza DB = new Baza();
-            PreparedStatement upit = DB.exec("DELETE FROM kontakt WHERE id=?");
+            PreparedStatement upit = DB.exec("DELETE FROM proizvod WHERE id=?");
             upit.setInt(1, this.getSifra());
             upit.executeUpdate();
         } catch (SQLException ex) {

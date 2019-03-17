@@ -15,7 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.LogiraniKorisnikModel;
+import model.Korisnik;
 
 public class LoginController implements Initializable {
 
@@ -29,13 +29,13 @@ public class LoginController implements Initializable {
     PasswordField lozinkaTxt;
 
     public void prijavise (ActionEvent e) {
-        String kime = kimeTxt.getText();
+        String ime = kimeTxt.getText();
         String lozinka = lozinkaTxt.getText();
         
-        if (kime.equals("") || lozinka.equals("")) {
+        if (ime.equals("") || lozinka.equals("")) {
             statusLbl.setText("Morate unijeti sve vrijednosti!");
         } else {
-            if (LogiraniKorisnikModel.logiraj(kime, lozinka)) {
+            if (Korisnik.logiraj(ime, lozinka)) {
                 noviProzor(e,"/view/Storage.fxml");
             } else {
                 statusLbl.setText("Korisnicki podatci nisu ispravni!");
@@ -49,7 +49,7 @@ public class LoginController implements Initializable {
             root = FXMLLoader.load(getClass().getResource(path));
             Stage stage = new Stage();
             stage.setTitle("Storage Management");
-            stage.setScene(new Scene(root, 834, 400));
+            stage.setScene(new Scene(root, 1024, 454));
             stage.show();
             ((Node) (e.getSource())).getScene().getWindow().hide();
         } catch (IOException ev) {
