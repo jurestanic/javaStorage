@@ -23,19 +23,19 @@ public class LoginController implements Initializable {
     Label statusLbl;
     
     @FXML
-    TextField kimeTxt;
+    TextField imeTxt;
     
     @FXML
     PasswordField lozinkaTxt;
 
-    public void prijavise (ActionEvent e) {
-        String ime = kimeTxt.getText();
+    public void login (ActionEvent e) {
+        String ime = imeTxt.getText();
         String lozinka = lozinkaTxt.getText();
         
         if (ime.equals("") || lozinka.equals("")) {
             statusLbl.setText("Morate unijeti sve vrijednosti!");
         } else {
-            if (Korisnik.logiraj(ime, lozinka)) {
+            if (Korisnik.login(ime, lozinka)) {
                 noviProzor(e,"/view/Storage.fxml");
             } else {
                 statusLbl.setText("Korisnicki podatci nisu ispravni!");
@@ -49,6 +49,7 @@ public class LoginController implements Initializable {
             root = FXMLLoader.load(getClass().getResource(path));
             Stage stage = new Stage();
             stage.setTitle("Storage Management");
+            stage.setResizable(false);
             stage.setScene(new Scene(root, 1024, 454));
             stage.show();
             ((Node) (e.getSource())).getScene().getWindow().hide();

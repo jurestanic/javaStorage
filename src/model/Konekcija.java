@@ -19,10 +19,12 @@ public abstract class Konekcija {
         this.korisnik = korisnik;
         this.lozinka = lozinka;
         this.baza = baza;
-        this.spoji();
     }
 
-    private void spoji () {
+    public abstract ResultSet select (String sql);
+    public abstract PreparedStatement exec (String sql);
+
+    public void connect () {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             this.konekcija = DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.baza+"?"
@@ -34,7 +36,14 @@ public abstract class Konekcija {
         }
     }
 
-    public abstract ResultSet select (String sql);
-    public abstract PreparedStatement exec (String sql);
+    public void close () {
+        try {
+            this.konekcija.close();
+        } catch (SQLException ex) {
+            System.out.println("Konekcija se ne moze zatvoriti.");
+        }
+    }
+
+
 
 }

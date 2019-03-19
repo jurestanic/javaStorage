@@ -17,7 +17,7 @@ public class Korisnik implements Model{
         admin, member
     }
 
-    public static Role user;
+    public static Role userRole;
     public static String userName;
 
     private SimpleIntegerProperty id;
@@ -72,6 +72,7 @@ public class Korisnik implements Model{
         } catch (SQLException ex) {
             System.out.println("Nastala je greška prilikom iteriranja: " + ex.getMessage());
         }
+        DB.close();
         return lista;
     }
 
@@ -83,12 +84,13 @@ public class Korisnik implements Model{
     @Override
     public void update() {
         try {
-            setRole(this.getUlogaInt());
+            setRole(getUlogaInt());
             Baza DB = new Baza();
             PreparedStatement upit = DB.exec("UPDATE korisnik SET role_id=? WHERE id=?");
             upit.setInt(1, getUlogaInt());
             upit.setInt(2, this.getId());
             upit.executeUpdate();
+            DB.close();
         } catch (SQLException ex) {
             System.out.println("Greška prilikom spasavanja korisnika u bazu: " + ex.getMessage());
         }
@@ -99,9 +101,9 @@ public class Korisnik implements Model{
 
     }
 
-    public static boolean logiraj (String ime, String lozinka) {
-        Baza db = new Baza();
-        PreparedStatement ps = db.exec("SELECT * FROM korisnik WHERE korisnicko_ime =? AND "
+    public static boolean login(String ime, String lozinka) {
+        Baza DB = new Baza();
+        PreparedStatement ps = DB.exec("SELECT * FROM korisnik WHERE korisnicko_ime =? AND "
                 + "lozinka=?");
         try {
 
@@ -113,26 +115,30 @@ public class Korisnik implements Model{
             if(rs.next()){
                 userName = rs.getString("korisnicko_ime");
                 setRole(rs.getInt("role_id"));
+                DB.close();
                 return true;
             } else {
+                DB.close();
                 return false;
             }
 
         } catch (SQLException ex) {
             System.out.println("Nastala je greška: "+ex.getMessage());
+            DB.close();
             return false;
         }
+
     }
 
     public static void setRole(int id){
         if(id == 1){
-            user = Role.admin;
+            userRole = Role.admin;
         } else {
-            user = Role.member;
+            userRole = Role.member;
         }
     }
 
     public static boolean checkIsAdmin(){
-        return user.toString() == "admin";
+        return userRole.toString() == "admin";
     }
 }

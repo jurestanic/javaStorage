@@ -2,23 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/AdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/Admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SportShop/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SportShop/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SportShop/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SportShop/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SportShop/controller/StorageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SportShop/controller/StorageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SportShop/model/LogiraniKorisnikModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SportShop/model/Baza.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SportShop/model/Baza.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SportShop/model/Konekcija.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SportShop/model/Konekcija.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SportShop/model/Korisnik.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SportShop/model/Korisnik.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SportShop/model/Proizvod.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SportShop/model/Proizvod.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SportShop/view/Storage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SportShop/view/Storage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SportShop/view/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SportShop/view/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SportShop/view/login.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/StorageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/StorageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Baza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Baza.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Konekcija.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Konekcija.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/LogiraniKorisnikModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Korisnik.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Korisnik.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Korisnik.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Proizvod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Proizvod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Storage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Storage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/login.css" beforeDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,11 +75,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/Proizvod.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="148" column="44" lean-forward="true" selection-start-line="148" selection-start-column="44" selection-end-line="148" selection-end-column="44" />
+            <state relative-caret-position="1018">
+              <caret line="92" column="22" lean-forward="true" selection-start-line="92" selection-start-column="22" selection-end-line="92" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/StorageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="112" column="71" lean-forward="true" selection-start-line="112" selection-start-column="71" selection-end-line="112" selection-end-column="71" />
+            <state relative-caret-position="321">
+              <caret line="192" column="51" lean-forward="true" selection-start-line="192" selection-start-column="51" selection-end-line="192" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -134,19 +134,19 @@
         <option value="$PROJECT_DIR$/src/model/Connection.java" />
         <option value="$PROJECT_DIR$/src/model/Database.java" />
         <option value="$PROJECT_DIR$/src/controller/RegisterController.java" />
-        <option value="$PROJECT_DIR$/src/view/Login.fxml" />
         <option value="$PROJECT_DIR$/src/view/Storage.fxml" />
-        <option value="$PROJECT_DIR$/src/model/Baza.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/model/Model.java" />
         <option value="$PROJECT_DIR$/src/model/LogiraniKorisnikModel.java" />
-        <option value="$PROJECT_DIR$/src/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/view/Admin.fxml" />
         <option value="$PROJECT_DIR$/src/controller/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/model/Baza.java" />
+        <option value="$PROJECT_DIR$/src/view/Login.fxml" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/model/Konekcija.java" />
         <option value="$PROJECT_DIR$/src/model/Korisnik.java" />
-        <option value="$PROJECT_DIR$/src/model/Proizvod.java" />
         <option value="$PROJECT_DIR$/src/controller/StorageController.java" />
+        <option value="$PROJECT_DIR$/src/model/Proizvod.java" />
       </list>
     </option>
   </component>
@@ -166,6 +166,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -192,14 +194,18 @@
             </path>
             <path>
               <item name="SportShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SportShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SportShop" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -321,7 +327,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23347548" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23614073" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -386,9 +392,6 @@
     <entry file="file://$PROJECT_DIR$/SportShop.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/login.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="367">
@@ -404,56 +407,51 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Baza.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
+            <element signature="e#293#294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/login.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Admin.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="103" selection-start-line="14" selection-start-column="103" selection-end-line="14" selection-end-column="103" />
+        <state relative-caret-position="187">
+          <caret line="11" column="169" selection-start-line="11" selection-start-column="127" selection-end-line="11" selection-end-column="169" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Login.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+        <state relative-caret-position="327">
+          <caret line="22" column="97" lean-forward="true" selection-start-line="22" selection-start-column="97" selection-end-line="22" selection-end-column="97" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Konekcija.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="757">
-          <caret line="62" column="9" lean-forward="true" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="67" selection-start-line="67" selection-end-line="76" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="306">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+        <state relative-caret-position="408">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Konekcija.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="22" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -464,10 +462,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Baza.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="32" column="34" lean-forward="true" selection-start-line="30" selection-start-column="53" selection-end-line="32" selection-end-column="34" />
+        <state relative-caret-position="391">
+          <caret line="38" column="45" lean-forward="true" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -476,8 +474,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Korisnik.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="19" selection-start-line="19" selection-end-line="20" selection-end-column="34" />
+        <state relative-caret-position="357">
+          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#create#0;class#Korisnik#0" />
@@ -486,10 +484,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Proizvod.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="148" column="44" lean-forward="true" selection-start-line="148" selection-start-column="44" selection-end-line="148" selection-end-column="44" />
+        <state relative-caret-position="323">
+          <caret line="58" column="37" selection-start-line="58" selection-start-column="37" selection-end-line="58" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -498,8 +496,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/StorageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="112" column="71" lean-forward="true" selection-start-line="112" selection-start-column="71" selection-end-line="112" selection-end-column="71" />
+        <state relative-caret-position="321">
+          <caret line="192" column="51" lean-forward="true" selection-start-line="192" selection-start-column="51" selection-end-line="192" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Proizvod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1018">
+          <caret line="92" column="22" lean-forward="true" selection-start-line="92" selection-start-column="22" selection-end-line="92" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -35,6 +35,7 @@ public class Proizvod implements Model{
         } catch (SQLException ex) {
             System.out.println("Nastala je greška prilikom iteriranja: " + ex.getMessage());
         }
+        DB.close();
     }
 
     public Proizvod (Integer sifra, String ime, String kategorija, String kolicina, String cijena, int skladiste) {
@@ -93,6 +94,14 @@ public class Proizvod implements Model{
         }
     }
 
+    public int getStorageInt(){
+        if(this.getSkladiste() != 1){
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
     public static ObservableList<Proizvod> listaProizvoda() {
         ObservableList<Proizvod> lista = FXCollections.observableArrayList();
         Baza DB = new Baza();
@@ -105,6 +114,7 @@ public class Proizvod implements Model{
         } catch (SQLException ex) {
             System.out.println("Nastala je greška prilikom iteriranja: " + ex.getMessage());
         }
+        DB.close();
         return lista;
     }
 
@@ -114,7 +124,7 @@ public class Proizvod implements Model{
         try {
             Baza DB = new Baza();
 
-            if((getKatInt() == -1) && (Korisnik.user.toString() == "admin")) {
+            if((getKatInt() == -1) && (Korisnik.checkIsAdmin())) {
                 map.put(getKategorija(), ++katNum);
                 PreparedStatement katUpit = DB.exec("INSERT INTO kategorija VALUES (?,?)");
                 katUpit.setInt(1, getKatInt());
@@ -130,7 +140,7 @@ public class Proizvod implements Model{
             upit.setInt(5, this.getSkladiste());
 
             upit.executeUpdate();
-
+            DB.close();
         } catch (SQLException ex) {
             System.out.println("Greška prilikom spasavanja korisnika u bazu: " + ex.getMessage());
         }
@@ -148,6 +158,7 @@ public class Proizvod implements Model{
             upit.setInt(5, this.getSkladiste());
             upit.setInt(6, this.getSifra());
             upit.executeUpdate();
+            DB.close();
         } catch (SQLException ex) {
             System.out.println("Greška prilikom spasavanja korisnika u bazu: " + ex.getMessage());
         }
@@ -161,6 +172,7 @@ public class Proizvod implements Model{
             PreparedStatement upit = DB.exec("DELETE FROM proizvod WHERE id=?");
             upit.setInt(1, this.getSifra());
             upit.executeUpdate();
+            DB.close();
         } catch (SQLException ex) {
             System.out.println("Greška prilikom spasavanja korisnika u bazu: " + ex.getMessage());
         }

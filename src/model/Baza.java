@@ -10,8 +10,8 @@ public class Baza extends Konekcija {
     private Statement upit;
     private PreparedStatement execUpit;
 
-    public Baza () {
-        super();
+    public Baza(){
+        connect();
     }
 
     @Override

@@ -66,7 +66,7 @@ public class StorageController implements Initializable {
 
     @FXML
     public void logout(ActionEvent e){
-        newStage(e,"/view/Login.fxml", 460, 320, "Login");
+        newStage(e,"/view/Login.fxml", 600, 400, "Login");
     }
 
     @FXML
@@ -89,6 +89,7 @@ public class StorageController implements Initializable {
             root = FXMLLoader.load(getClass().getResource(path));
             Stage stage = new Stage();
             stage.setTitle(title);
+            stage.setResizable(false);
             stage.setScene(new Scene(root, x, y));
             stage.show();
             ((Node) (e.getSource())).getScene().getWindow().hide();
@@ -110,7 +111,10 @@ public class StorageController implements Initializable {
         Proizvod noviProizvod = new Proizvod(0, ime, kategorija, kolicina, cijena, skladiste);
         ObservableList<Proizvod> data = Proizvod.listaProizvoda();
 
-        if(!checkKat(noviProizvod) && !Korisnik.checkIsAdmin()) return;
+
+        if(!Korisnik.checkIsAdmin()){
+            if(!checkKat(noviProizvod)) return;
+        }
 
         for(Proizvod p : data){
             if(p.getIme().equalsIgnoreCase(noviProizvod.getIme()) && p.getKategorija().equalsIgnoreCase(noviProizvod.getKategorija())){
@@ -149,7 +153,6 @@ public class StorageController implements Initializable {
         this.odabraniProizvod.setSkladiste(Integer.parseInt(this.skladisteTxt.getText()));
         if(!checkKat(odabraniProizvod)) return;
         this.odabraniProizvod.update();
-
         refreshTableView();
     }
 
@@ -186,8 +189,11 @@ public class StorageController implements Initializable {
     }
 
     private boolean checkKat(Proizvod proizvod){
-        if(proizvod.getKatInt() == -1){
+        if(proizvod.getKatInt() == -1) {
             errorTxt.setText("Ne postoji ta kategorija!");
+            return false;
+        } else if (proizvod.getStorageInt() == -1){
+            errorTxt.setText("Ne postoji to skladište!");
             return false;
         } else {
             errorTxt.setText("");
