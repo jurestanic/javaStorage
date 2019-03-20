@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2019 at 07:34 PM
+-- Generation Time: Mar 20, 2019 at 06:34 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -58,14 +58,7 @@ CREATE TABLE `kategorija` (
 
 INSERT INTO `kategorija` (`kategorija_id`, `ime`) VALUES
 (1, 'Obuca'),
-(2, 'Skije'),
-(3, 'Naocale'),
-(5, 'qwdqdqwd'),
-(15, 'wfwefwef'),
-(16, 'qwdqdqwdqdq'),
-(17, 'qweqweqwe'),
-(26, 'qweqwrtwsfwdf'),
-(33, 'werwerwer');
+(2, 'Skije');
 
 -- --------------------------------------------------------
 
@@ -109,12 +102,9 @@ CREATE TABLE `proizvod` (
 --
 
 INSERT INTO `proizvod` (`id`, `ime`, `kategorija_id`, `kolicina`, `cijena`, `skladiste_id`) VALUES
-(1, 'Fischer', 2, '1968', '29', 1),
+(1, 'Fischer', 2, '161', '499', 1),
 (80, 'Nike', 1, '243', '124', 1),
-(98, 'Adidas', 1, '505', '132', 1),
-(108, 'Puma', 1, '1247', '123', 1),
-(111, 'New Balance', 1, '62', '189', 1),
-(113, 'Fuša Skije', 2, '1', '99', 1);
+(98, 'Adidas', 1, '505', '132', 1);
 
 -- --------------------------------------------------------
 
@@ -224,7 +214,7 @@ ALTER TABLE `korisnik`
 -- AUTO_INCREMENT for table `proizvod`
 --
 ALTER TABLE `proizvod`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `role`

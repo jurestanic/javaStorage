@@ -111,10 +111,12 @@ public class StorageController implements Initializable {
         Proizvod noviProizvod = new Proizvod(0, ime, kategorija, kolicina, cijena, skladiste);
         ObservableList<Proizvod> data = Proizvod.listaProizvoda();
 
-
         if(!Korisnik.checkIsAdmin()){
             if(!checkKat(noviProizvod)) return;
         }
+
+        if(!checkStorage(noviProizvod)) return;
+
 
         for(Proizvod p : data){
             if(p.getIme().equalsIgnoreCase(noviProizvod.getIme()) && p.getKategorija().equalsIgnoreCase(noviProizvod.getKategorija())){
@@ -151,7 +153,7 @@ public class StorageController implements Initializable {
         this.odabraniProizvod.setKolicina(this.kolicinaTxt.getText());
         this.odabraniProizvod.setCijena(this.cijenaTxt.getText());
         this.odabraniProizvod.setSkladiste(Integer.parseInt(this.skladisteTxt.getText()));
-        if(!checkKat(odabraniProizvod)) return;
+        if(!checkKat(odabraniProizvod) || !checkStorage(odabraniProizvod)) return;
         this.odabraniProizvod.update();
         refreshTableView();
     }
@@ -192,7 +194,14 @@ public class StorageController implements Initializable {
         if(proizvod.getKatInt() == -1) {
             errorTxt.setText("Ne postoji ta kategorija!");
             return false;
-        } else if (proizvod.getStorageInt() == -1){
+        }  else {
+            errorTxt.setText("");
+            return true;
+        }
+    }
+
+    private boolean checkStorage(Proizvod proizvod){
+        if (proizvod.getStorageInt() == -1){
             errorTxt.setText("Ne postoji to skladište!");
             return false;
         } else {
